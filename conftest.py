@@ -9,10 +9,12 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
+# Добавляем обработку командной строки с параметром language
 def pytest_addoption(parser):
     parser.addoption('--language', action='store', default=None,
-                     help='Choose language: ru, en, es, fr')
+                     help='Choose language: ru, en, fr.. etc')
 
+# Описываем фикстуру объявления браузера, который будет передаваться в тестовый метод как параметр
 @pytest.fixture(scope='function')
 def browser(request):
     user_language = request.config.getoption("language")
